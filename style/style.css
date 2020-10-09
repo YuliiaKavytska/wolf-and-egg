@@ -325,13 +325,15 @@ body{
 	background: url('../img/left-top.png') center 205px/18% no-repeat;
 }
 .wolf-right-top{
-	background: url('../img/right-top.png') center 205px/18% no-repeat;
+	background: url('../img/left-top.png') center 205px/18% no-repeat;
+	transform: scale(-1, 1);
 }
 .wolf-left-bottom{
 	background: url('../img/left-bottom.png') center 245px/17% no-repeat;
 }
 .wolf-right-bottom{
-	background: url('../img/right-bottom.png') center 245px/17% no-repeat;
+	background: url('../img/left-bottom.png') center 245px/17% no-repeat;
+	transform: scale(-1, 1);
 }
 /* ================================================================= */
 
@@ -433,7 +435,7 @@ body{
 .hen-left-top{
 	left: 143px;
 	top: 78px;
-	transform: scale(-1, 1)
+	transform: scale(-1, 1);
 }
 .hen-right-top{
 	right: 143px;
@@ -442,7 +444,7 @@ body{
 .hen-left-bottom{
 	left: 143px;
 	top: -92px;
-	transform: scale(-1, 1)
+	transform: scale(-1, 1);
 }
 .hen-right-bottom{
 	right: 143px;
@@ -490,13 +492,7 @@ body{
 	left: 390px;
 	width: 40px;
 	height: 40px;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-	border: none;
 	background: url('../img/chicken-left.png') 0px 0px /cover no-repeat;
-	border-radius: none;
-	z-index: 6;
 }
 .broken-egg-right{
 	position: absolute;
@@ -504,13 +500,8 @@ body{
 	left: 570px;
 	width: 40px;
 	height: 40px;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-	border: none;
-	background: url('../img/chicken-right.png') 0px 0px /cover no-repeat;
-	border-radius: none;
-	z-index: 6;
+	background: url('../img/chicken-left.png') 0px 0px /cover no-repeat;
+	transform: scale(-1, 1);
 }
 /*добавление жизни*/
 #chicken{
@@ -519,15 +510,20 @@ body{
 	height: 100px;
 	top: 50px;
 	left: 450px;
-	-webkit-box-shadow: none;
-	-moz-box-shadow: none;
-	box-shadow: none;
-	border: none;
 	background: url('../img/live.svg') 0px 0px /cover no-repeat;
-	border-radius: none;
-	z-index: 6;
 }
 /* стили для разбитого яйца */
+#fallEgg{
+	position: absolute;
+	width: 25px;
+  	height: 40px;
+  	-webkit-box-shadow: inset 0px -20px 30px -15px rgb(253, 212, 30);
+	-moz-box-shadow: inset 0px -20px 30px -15px rgb(253, 212, 30);
+	box-shadow: inset 0px -20px 30px -15px rgb(253, 212, 30);
+	border: 1px solid #f7a000;
+	background: #fff;
+	border-radius: 50%;
+}
 .broken-egg{
 	position: absolute;
 	width: 55px;

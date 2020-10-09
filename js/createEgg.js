@@ -47,6 +47,7 @@ function randomPozition() {
 */
 // создаем шарики
 function createBall(poz) {
+	var isFall = 0;
 	if(quantityLifes>0) {
 		var ball = document.createElement("div"); //создаем блок div
 		ball.id = "egg";	// присваиваем id
@@ -69,8 +70,8 @@ function createBall(poz) {
 
 			//==========================
 			// для создания следующего яйца делаем проверку, чтобы с одной стороны не было больше 1 яйца
-			if((ball.offsetLeft >= pxLeftCreate && ball.offsetLeft <= pxLeftCreate+5) 
-				|| (ball.offsetLeft <= pxRightCreate && ball.offsetLeft >= pxRightCreate-5)) {	
+			if((ball.offsetLeft >= pxLeftCreate && ball.offsetLeft <= pxLeftCreate+6) 
+				|| (ball.offsetLeft <= pxRightCreate && ball.offsetLeft >= pxRightCreate-6)) {	
 					randomPozition();	//создаем шарик
 			}
 			// проверяем дошло ли яйцо до края
@@ -88,16 +89,14 @@ function createBall(poz) {
 				// громкость этого звука, половина
 				music.volume = 0.5;
 				scoreLifes();	// тут увеличиваем жизни
+				ball.remove();	//удаляем шарик
 			}
 			else {	// если нет, то убираем одну жизнь
-
-				// quantityLifes = quantityLifes - 1;
-				if (ball.className == "egg-left-top" || ball.className == "egg-left-bottom") {
-					crashEgg("broken-egg-left");
+				fall(ball);
+				if(isFall != 1){
+					quantityLifes -= 1;
 				}
-				else {
-					crashEgg("broken-egg-right");
-				}
+				isFall = 1;
 				deleteLifes();
 				createLifes();
 				if (quantityLifes == 0){ // если жизни закончились, то
@@ -105,7 +104,6 @@ function createBall(poz) {
 					gameEnd();	// запуск коцна игры
 				}
 			}
-				ball.remove();	//удаляем шарик
 				speedGame();	//меняем скорость
 				//=====================
 			}
@@ -134,6 +132,22 @@ function addLifes() {
 			}
 		} 
 	}, 10)
+}
+
+// функция падаения
+function fall(egg){
+	var t = setInterval(() => {
+		egg.style.top = egg.offsetTop + 3 + "px"; // сверху на 3px
+		if(egg.offsetTop >= 500){
+			clearInterval(t);
+			egg.remove();
+			if(egg.className == "egg-left-top" || egg.className == "egg-left-bottom"){
+				crashEgg("broken-egg-left");
+			}else{
+				crashEgg("broken-egg-right");
+			}		
+		}
+	}, 10);
 }
 
 function crashEgg(side) {

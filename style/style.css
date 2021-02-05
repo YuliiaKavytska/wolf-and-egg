@@ -60,6 +60,7 @@ h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight: 400;}
 
 /* Настройки бади. общий шрифт, фон */
 body{
+	padding: 0 15px;
 	position: fixed;
 	font-family: 'Conv_BeeskneesC';
 	background: url('../img/main-bg.jpg') center/ cover no-repeat;
@@ -80,7 +81,7 @@ body{
 /* Размеры игры, фон игры */
 #game{
 	display: block;
-	width: 1000px;
+	max-width: 1000px;
 	height: 600px;
 	position: relative;
 	z-index: 2;

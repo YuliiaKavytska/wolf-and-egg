@@ -3,7 +3,7 @@ function startPause(){
 	timerEgg = setTimeout(function() {
 		if(pause == 0) { // если нет паузы, то
 			randomPozition();  //создаем яйцо
-			if(speedEgg > 900){ // уменьшаем интервал между яицами
+			if(speedEgg > 700){ // уменьшаем интервал между яицами
 				speedEgg = speedEgg - 100;	
 			}
 			if(speedAnimal > 80){ // увеличиваем скорость анимации яиц
